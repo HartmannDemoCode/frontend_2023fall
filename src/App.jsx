@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -12,8 +13,23 @@ function App() {
     <>
       <Header facade={facade} setUserContext={setUserContext}/>
      <h1>Hello to User: {userContext && userContext.username}</h1> 
+     <SecretComponent facade={facade} userContext={userContext}/>
+     <Outlet/>
     </>
   )
 }
 
 export default App
+
+const SecretComponent = ({facade, userContext}) => {
+  const [dataFromServer, setDataFromServer] = useState("Loading...")
+  useEffect(() => {
+    facade.fetchAny('protected/user_demo', (data)=>setDataFromServer(data.msg), 
+    (err)=>setDataFromServer("Error: " + err.message), "GET", null, true);
+  })
+  return (
+    <>
+    Data from server when logged in as {userContext && userContext.username}: {dataFromServer}
+    </>
+  )
+}
