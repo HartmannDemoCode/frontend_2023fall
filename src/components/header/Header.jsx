@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginContainer from '../login/LoginContainer';
-import './Header.css';
+import './header.css';
 
 const Header = ({facade, setUserContext}) => {
   return (
