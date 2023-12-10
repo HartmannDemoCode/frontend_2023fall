@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import photoFacade from '../photolinks';
+import photoFacade from '../../photolinks';
 import { useParams  } from 'react-router-dom';
 export default () => {
     const { id } = useParams();

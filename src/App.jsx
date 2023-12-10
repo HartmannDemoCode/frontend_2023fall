@@ -22,10 +22,11 @@ function App() {
 export default App
 
 const SecretComponent = ({facade, userContext}) => {
-  const [dataFromServer, setDataFromServer] = useState("Loading...")
+  const [dataFromServer, setDataFromServer] = useState("Loading...");
+  const [error, setError] = useState(null);
   useEffect(() => {
     facade.fetchAny('protected/user_demo', (data)=>setDataFromServer(data.msg), 
-    (err)=>setDataFromServer("Error: " + err.message), "GET", null, true);
+    (err)=>{err?setError("Error: " + err.message):''}, "GET", null, true);
   })
   return (
     <>

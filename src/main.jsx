@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import App from "./App";
+import Photos from "./components/photos/photos";
+import PhotoDetails from "./components/photos/PhotoDetails";
 import ErrorPage from "./components/error-page";
 import {
   createBrowserRouter,
@@ -35,10 +37,13 @@ const router = createBrowserRouter(
     <>
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       <Route path="articles" element={<h1>Articles</h1>} />
+      <Route path="photos" element={<Photos/>}>
+        <Route path=":id" element={<PhotoDetails/>} />
+      </Route>
     </Route>
     <Route path="/about" element={<h1>About</h1>} />
     </>
-  )//,{basename: "/react-router-dom"} // TODO: TEST THAT THIS WORKS
+  )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(

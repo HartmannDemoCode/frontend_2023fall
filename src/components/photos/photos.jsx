@@ -4,12 +4,12 @@ import "./photos.css";
 
 export default () => {
   let navigate = useNavigate();
-  const [demo, demo2] = useOutletContext(); // [demo, demo2] is the context passed from App.jsx
+  //const [demo, demo2] = useOutletContext(); // [demo, demo2] is the context passed from App.jsx
   return (
     <div className="photoscontainer">
     <div className="photos">
       <h1>PHOTOS:</h1>
-      <b>Message from App:</b> {demo}, {demo2}
+      {/* <b>Message from App:</b> {demo}, {demo2} */}
       {PhotoFacade.getAll().map((photo) => {
         return (
             <img
